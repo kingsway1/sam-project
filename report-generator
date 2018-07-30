@@ -1,0 +1,1 @@
+nmap -sV IP -oX scan.xml && xsltproc scan.xml -o "`date +%m%d%y`_report.html"
