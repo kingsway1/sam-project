@@ -8,7 +8,6 @@ ip tuntap add dev tap0 mode tap user $(whoami)
 
 # connect interfaces to bridge  
 
-ip link set eth0 master br0
 ip link set eth0 master virbr0
 ip link set tap0 master virbr0
 
