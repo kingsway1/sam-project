@@ -1,0 +1,29 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	deleted:    072518_report.html
+#	deleted:    bridge.sh
+#	deleted:    cleanup.sh
+#	deleted:    clone.sh
+#	deleted:    echo.sh
+#	deleted:    hello-world
+#	deleted:    image1/linux-0.2.img
+#	deleted:    image1/qemu.sh
+#	deleted:    mount.sh
+#	deleted:    qemu-boot-script.sh
+#	deleted:    report-generator
+#	deleted:    simple-login/html/config.php
+#	deleted:    simple-login/html/login.php
+#	deleted:    simple-login/html/logout.php
+#	deleted:    simple-login/html/register.php
+#	deleted:    simple-login/html/welcome.php
+#	deleted:    test
+#	deleted:    test.sh
+#	deleted:    test123
+#
