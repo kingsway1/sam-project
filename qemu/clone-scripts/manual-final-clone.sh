@@ -77,22 +77,19 @@ printf "Copying $disk to $location..."
 echo " "
 
 
-dd if=/dev/sda of=$location/disk.img status=none
+dd if=$disk of=$location/disk.img status=none
 
-sleep 1.5
-echo""
-printf "\n$disk succesfully copied\n"
-echo""
-#verify if disk.img was succesfully created
-
-#copy disk.img to qemu host 
-
-#printf "copying disk to qemu host - select scp destination - for example root@192.168.33.159:/root\n"
-#printf "scp disk.img " 
-#read destination
-
-#scp /mnt/$location/disk.img $destination
-
-#if success then finish 
-#else enter valid location
-
+if [ $(blockdev --getsize64 $disk) -ne $(stat -c %s $location/disk.img) ]; then
+    echo " "
+    echo " "
+    rm $location/disk.img
+    #put in a mechanism to retry or exit the script 
+    printf "\n$disk unsuccesfully copied\n"
+    echo " "
+    echo " "
+else
+    echo " "
+    echo " "
+    printf "\n$disk succesfully copied\n"
+    echo " "
+    echo " "

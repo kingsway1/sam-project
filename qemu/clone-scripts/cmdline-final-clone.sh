@@ -2,7 +2,7 @@ while getopts ":hc:l:" opt; do
   case ${opt} in
     h )
       echo " "
-      echo "Usage: clone.sh -c /dev/sda -l /mnt/"
+      echo "Usage: clone.sh -c /dev/sda -l /mnt"
       echo " "
       echo "Cloning tool - clone an entire disk into an .img file"
       echo " " 
@@ -33,16 +33,29 @@ done
 shift $((OPTIND -1))
 
 echo " "
-echo "You are cloning $clone into $location"
+echo "You are cloning $clone into $location/disk.img"
+echo " "
 echo " "
 echo "Cloning in progress..."
 echo " "
-
+s
 dd if=$clone of=$location/disk.img status=none
 
+if [ $(blockdev --getsize64 $clone) -ne $(stat -c %s $location/disk.img) ]; then
+    echo " "
+    echo " "
+    rm $location/disk.img
+    echo "$clone unsuccessfully cloned into $location/disk.img"
+    echo " "
+    echo " "
+else
+    echo " "
+    echo " "
+    echo "$clone successfully cloned into $location/disk.img" 
+    echo " "
+    echo " "
+fi
 
-echo " "
-echo " "
-echo "$clone successfully cloned into $locationdisk.img" 
-echo " "
-echo " "
+
+
+
