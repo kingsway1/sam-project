@@ -38,7 +38,7 @@ echo " "
 echo " "
 echo "Cloning in progress..."
 echo " "
-s
+
 dd if=$clone of=$location/disk.img status=none
 
 if [ $(blockdev --getsize64 $clone) -ne $(stat -c %s $location/disk.img) ]; then
