@@ -93,3 +93,4 @@ else
     printf "\n$disk succesfully copied\n"
     echo " "
     echo " "
+fi
