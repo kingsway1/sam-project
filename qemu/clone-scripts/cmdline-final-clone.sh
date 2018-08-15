@@ -1,8 +1,8 @@
-while getopts ":hc:l:" opt; do
+while getopts ":hc:l:t:" opt; do
   case ${opt} in
     h )
       echo " "
-      echo "Usage: clone.sh -c /dev/sda -l /mnt"
+      echo "Usage: clone.sh -c /dev/sda -l /mnt -t user@192.168.x.x"
       echo " "
       echo "Cloning tool - clone an entire disk into an .img file"
       echo " " 
@@ -11,6 +11,7 @@ while getopts ":hc:l:" opt; do
       echo " -h    Display this help message."
       echo " -c    Select the disk to clone, e.g. /dev/sda "
       echo " -l    Select the location to mount disk, e.g. /mnt"
+      echo " -t    Select a destination to transfer the clone, such as QEMU host, e.g user@192.168.x.x"
       echo " "
       exit 0
       ;;
@@ -19,6 +20,9 @@ while getopts ":hc:l:" opt; do
       ;;
     l )
       location=$OPTARG
+      ;;
+    t )
+      transfer=$OPTARG
       ;;
     \? )
       echo "Invalid Option: -$OPTARG" 1>&2
@@ -54,6 +58,12 @@ else
     echo "$clone successfully cloned into $location/disk.img" 
     echo " "
     echo " "
+    sleep 1.5
+    echo "Transfering $location/disk.img to $transfer..."
+    echo " "
+    echo " "
+    scp $location/disk.img $transfer:/home/sam/
+    echo "Transfer complete"
 fi
 
 
