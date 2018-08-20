@@ -67,10 +67,9 @@ else
     echo " "
     echo " "
     scp $location/disk.img $transfer:$directory
-    if [ $? -eq 0]; 
-    then
-  	echo " "
-        echo "disk.img successfully transfered to $transfer:$directory"
+    if [ $? -eq 0]; then
+	echo " "
+	echo "disk.img successfully transfered to $transfer:$directory"
 	echo " "
     else 
 	echo " "
