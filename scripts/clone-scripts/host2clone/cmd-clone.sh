@@ -71,9 +71,9 @@ else
 	echo " "
 	echo "disk.img successfully transfered to $transfer:$directory"
 	echo " "
-    else 
+    else
 	echo " "
-        echo "disk.img unsuccesfully transfered to $transfer:$directory, Parametres were possibly wrong, try a manual scp"
+	echo "disk.img unsuccesfully transfered to $transfer:$directory, Parametres were possibly wrong, try a manual scp"
 	echo " " 
     fi
 fi
