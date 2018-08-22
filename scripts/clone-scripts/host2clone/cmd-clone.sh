@@ -50,32 +50,32 @@ echo " "
 dd if=$clone of=$location/disk.img status=none
 
 if [ $(blockdev --getsize64 $clone) -ne $(stat -c %s $location/disk.img) ]; then
-    echo " "
-    echo " "
-    rm $location/disk.img
-    echo "$clone unsuccessfully cloned into $location/disk.img"
-    echo " "
-    echo " "
+	echo " "
+    	echo " "
+    	rm $location/disk.img
+    	echo "$clone unsuccessfully cloned into $location/disk.img"
+    	echo " "
+    	echo " "
 else
-    echo " "
-    echo " "
-    echo "$clone successfully cloned into $location/disk.img" 
-    echo " "
-    echo " "
-    sleep 1.5
-    echo "Transfering $location/disk.img to $transfer:$directory..."
-    echo " "
-    echo " "
-    scp $location/disk.img $transfer:$directory
-    if [ $? -eq 0 ]; then
 	echo " "
-	echo "disk.img successfully transfered to $transfer:$directory"
-	echo " "
-    else
-	echo " "
-	echo "disk.img unsuccesfully transfered to $transfer:$directory, Parametres were possibly wrong, try a manual scp"
-	echo " " 
-    fi
+    	echo " "
+    	echo "$clone successfully cloned into $location/disk.img" 
+    	echo " "
+    	echo " "
+    	sleep 1.5
+    	echo "Transfering $location/disk.img to $transfer:$directory..."
+    	echo " "
+    	echo " "
+    	scp $location/disk.img $transfer:$directory
+    	if [ $? -eq 0 ]; then
+		echo " "
+		echo "disk.img successfully transfered to $transfer:$directory"
+		echo " "
+    	else
+		echo " "
+		echo "disk.img unsuccesfully transfered to $transfer:$directory, Parametres were possibly wrong, try a manual scp"
+		echo " " 
+    	fi
 fi
 
 

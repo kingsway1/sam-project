@@ -20,7 +20,7 @@ function dir_checker()
 	printf "\nPlease provide the full path to the img file"
 	printf " Usage: /home/$USER/disk.img\n"
 
-	read -p 'Enter a location : ' image_dir
+	read -p 'Enter a location to the img file : ' image_dir
       	printf "\nChecking location...\n"
 
 	sleep 1.5
@@ -73,7 +73,7 @@ tap_dev
 if grep "up" /sys/class/net/$tap_allocation/operstate > /dev/null
 then
 	warning "Tap Device busy"
-        printf "The Tap device is busy, enter a unused tap device\n"
+	printf "The Tap device is busy, enter a unused tap device\n"
 	read -p 'Retry? y/n : ' decision
 	if [ "$decision" == 'y' ]; then
 		tap_dev
@@ -84,7 +84,8 @@ then
 	fi
 fi
 
-notification "Operation Completed"
+notification "Process Completed"
+echo " "
 printf "Beginning QEMU..." && sleep 2
 
 qemu-system-x86_64 -enable-kvm ${@:-$image_dir} -m ${@:-$mem_allocation} -net nic -net tap,ifname=${@:-$tap_allocation},script=no,downscript=no 
